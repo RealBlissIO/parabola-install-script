@@ -14,7 +14,6 @@ then run
 + NetworkManager
 + base 
 + linux-libre 
-+ networkmanager 
 + parabola-base 
 + grub 
 + wpa_supplicant 
