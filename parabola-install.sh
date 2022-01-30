@@ -3,10 +3,10 @@
 printf '\033c'
 echo "Welcome to the parabola-install script"
 echo "Freeedoooommmm"
-loadkeys fr
+echo"what is your keyboard [example : fr or uk ..]"
+read keys
+loadkeys $keys
 lsblk
-sleep 1
-sleep 1
 echo "Enter the drive: "
 read drive
 cfdisk $drive 
