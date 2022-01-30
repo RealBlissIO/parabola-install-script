@@ -106,16 +106,28 @@ $sorry pacman -S base-devel git xorg-xinit noto-fonts noto-fonts-emoji \
 	jq rxvt-unicode dhcpcd rsync picom xorg-xrdb xorg-xinit
 git clone https://github.com/RealBlissIO/Dotfiles
 git clone https://git.suckless.org/dmenu
-cp -r Dotfiles/dwm/ .
+echo "would you like the vanilla dwm (the modified one uses the french keyboared layout)[y/n]"
+read dwm
+if [[ $dwm = y ]] ; then
+	echo "installing vanilla dwm"
+	git clone https://git.suckless.org/dwm
+	cd dwm/
+	$sorry make clean install
+	cd ..
+fi
+if [[ $dwm = n ]] ; then
+	echo "installing the modified version of dwm by RealBlissIO"
+	cp -r Dotfiles/dwm/ .
+	cd dwm/
+	$sorry make clean install
+	cd ..
+fi
 cp -r Dotfiles/slstatus/ .
 cp Dotfiles/urxvt .
 cd $HOME
 cp .config/Dotfiles/.xinitrc .
 cp .config/Dotfiles/.Xresources .
 cp .config/Dotfiles/.bashrc .
-cd .config/dwm/
-$sorry make clean install
-cd ..
 cd slstatus/
 $sorry make clean install
 cd ..
