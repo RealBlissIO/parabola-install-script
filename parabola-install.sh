@@ -30,7 +30,7 @@ pacman -U https://www.parabola.nu/packages/core/i686/archlinux32-keyring-transit
 pacman-key --refresh-keys
 pacstrap /mnt base linux-libre networkmanager parabola-base grub wpa_supplicant dialog
 genfstab -p /mnt >> /mnt/etc/fstab
-sed '1,/^#part2$/d' parabola-install.sh > /mnt/arch-install2.sh
+sed '1,/^#part2$/d' parabola-install.sh > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
 exit
@@ -81,8 +81,8 @@ read username
 useradd -m $username
 passwd $username
 echo "Pre-Installation Finish Reboot now"
-ai3_path=/home/$username/arch-install3.sh
-sed '1,/^#part3$/d' arch-install2.sh > $ai3_path
+ai3_path=/home/$username/arch_install3.sh
+sed '1,/^#part3$/d' arch_install2.sh > $ai3_path
 chown $username:$username $ai3_path
 chmod +x $ai3_path
 su -c $ai3_path -s /bin/sh $username
