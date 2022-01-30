@@ -1,5 +1,7 @@
 # parabola-install-script
-The real freedom
+
+## The real freedom
+
 remember to use this command to run the script
 
 + chmod +x parabola-install.sh
@@ -8,7 +10,7 @@ then run
 
 + ./parabola-install.sh
 
-# what does it install ?
+## what does it install ?
 
 + sed
 + NetworkManager
@@ -50,4 +52,4 @@ then run
 + slstatus
 
 
-# as always thank you for choosing your freedom
+## as always thank you for choosing your freedom
