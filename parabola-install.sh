@@ -39,12 +39,16 @@ exit
 #part2
 printf '\033c'
 pacman -S --noconfirm sed
-ln -sf /usr/share/zoneinfo/Africa/Algiers /etc/localtime
+echo "zone info [example: Africa/Algiers]"
+read zoneinfo
+ln -sf /usr/share/zoneinfo/$zoneinfo /etc/localtime
 hwclock --systohc
 echo "en_US.UTF-8 UTF-8" >> /etc/locale.gen
 locale-gen
 echo "LANG=en_US.UTF-8" > /etc/locale.conf
-echo "KEYMAP=fr" > /etc/vconsole.conf
+echo "what is your keymap"
+read keymap
+echo "KEYMAP=$keymap" > /etc/vconsole.conf
 echo "Hostname: "
 read hostname
 echo $hostname > /etc/hostname
