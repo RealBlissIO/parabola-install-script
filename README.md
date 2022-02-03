@@ -4,11 +4,11 @@
 
 remember to use this command to run the script
 
- $ chmod +x parabola-install.sh
+- chmod +x parabola-install.sh
 
 then run
 
- $ ./parabola-install.sh
++ ./parabola-install.sh
 
 ## what does it install ?
 
