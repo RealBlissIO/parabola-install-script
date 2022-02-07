@@ -80,8 +80,6 @@ if [[ $elevation = doas ]] ; then
 	touch /etc/doas.conf
         echo "permit $username as root" >> /etc/doas.conf
 fi
-echo "Enter Username again please: "
-read username
 useradd -m $username
 passwd $username
 echo "Pre-Installation Finish Reboot now"
