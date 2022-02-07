@@ -70,7 +70,7 @@ if [[ $elevation = sudo ]] ; then
 	pacman -S sudo
 	echo "what will be your username" 
         read username
-	echo "$username ALL=(ALL) ALL"
+	echo "$username ALL=(ALL) ALL" >> /etc/sudoers
 fi
 if [[ $elevation = doas ]] ; then 
         echo "The right choice was chosen"
