@@ -11,7 +11,7 @@ echo "Enter the drive: "
 read drive
 cfdisk $drive 
 lsblk
-echo "Enter the linux partition: "
+echo "Enter the root partition: "
 read partition
 mkfs.ext4 $partition 
 echo "Enter boot partition: "
