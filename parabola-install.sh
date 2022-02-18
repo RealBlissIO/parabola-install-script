@@ -29,7 +29,7 @@ pacman -Sy archlinux-keyring archlinuxarm-keyring parabola-keyring sed
 pacman -U https://www.parabola.nu/packages/core/i686/archlinux32-keyring-transition/download/
 pacman-key --refresh-keys
 pacstrap /mnt base linux-libre networkmanager parabola-base grub wpa_supplicant dialog
-genfstab -p /mnt >> /mnt/etc/fstab
+genfstab -U -p /mnt >> /mnt/etc/fstab
 sed '1,/^#part2$/d' parabola-install.sh > /mnt/arch_install2.sh
 chmod +x /mnt/arch_install2.sh
 arch-chroot /mnt ./arch_install2.sh
@@ -39,7 +39,7 @@ exit
 #part2
 printf '\033c'
 pacman -S --noconfirm sed
-echo "zone info [example: Africa/Algiers]"
+echo "zone info [example: Africa/Casablanca]"
 read zoneinfo
 ln -sf /usr/share/zoneinfo/$zoneinfo /etc/localtime
 hwclock --systohc
@@ -104,5 +104,10 @@ doas pacman -S base-devel git xorg-xinit noto-fonts noto-fonts-emoji \
 	ffmpeg imagemagick fzf man-db papirus-icon-theme \
 	pipewire pipewire-pulse vim arc-gtk-theme rsync \
 	jq rxvt-unicode dhcpcd rsync picom xorg-xrdb xorg-xinit
+git clone https://github.com/RealBlissIO/Dotfiles.git
+mv Dotfiles/config/* .
+cd $HOME
+cp .config/Dotfiles/.xinitrc .
+mr -rf .config/Dotfiles
 echo "done-----exiting..."
 exit
