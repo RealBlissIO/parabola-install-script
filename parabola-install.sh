@@ -93,9 +93,6 @@ exit
 
 #part3
 printf '\033c'
-cd $HOME
-mkdir .config
-cd .config/
 sudo pacman -S base-devel git xorg-xinit noto-fonts noto-fonts-emoji \
 	ffmpeg imagemagick fzf man-db papirus-icon-theme \
 	pipewire pipewire-pulse vim arc-gtk-theme rsync \
@@ -104,10 +101,20 @@ doas pacman -S base-devel git xorg-xinit noto-fonts noto-fonts-emoji \
 	ffmpeg imagemagick fzf man-db papirus-icon-theme \
 	pipewire pipewire-pulse vim arc-gtk-theme rsync \
 	jq rxvt-unicode dhcpcd rsync picom xorg-xrdb xorg-xinit
-git clone https://github.com/RealBlissIO/Dotfiles.git
-mv Dotfiles/config/* .
-cd $HOME
-cp .config/Dotfiles/.xinitrc .
-mr -rf .config/Dotfiles
+cd $HOME &&
+echo "Setting up the config folder" &&
+mkdir .config  &&
+cd .config/ &&
+git clone https://aur.archlinux.org/pikaur.git &&
+cd pikaur && makepkg -si && pikaur nerd-fonts-jetbrains-mono || echo "pikaur failed to install"
+git clone https://github.com/shaolingit/Dotfiles.git &&
+mv .config/Dotfiles/config/alacritty . &&
+mv Dotfiles/suckless/* . &&
+sudo make clean install -C dwm/ || echo "dwm failed to compile"
+sudo make clean install -C dmenu/  || echo "dmenu failed to compile"
+sudo make clean install -C slstatus/ || echo "slstatus failed to compile"
+cd $HOME && 
+mv .config/Dotfiles/config/bashrc .bashrc &&
+mv .config/Dotfiles/config/xinitrc .xinitrc
 echo "done-----exiting..."
 exit
