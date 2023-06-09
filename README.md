@@ -4,11 +4,11 @@
 
 remember to use this command to run the script
 
-- chmod +x parabola-install.sh
+- chmod +x main.sh
 
 then run
 
-+ ./parabola-install.sh
++ ./main.sh # As root
 
 ## Disclaimer
 
@@ -26,7 +26,7 @@ This script automates the installation process of Arch Linux using a simple comm
 7. Prompts the user for hostname, root password, and a new user.
 8. Installs the GRUB bootloader for BIOS or the EFISTUB for UEFI systems.
 9. Configures sudo access for the new user.
-10. Optionally installs and configures a desktop environment (XFCE, GNOME, KDE) or NetworkManager.
+10. Optionally installs and configures a desktop environment (XFCE, GNOME, KDE) or none.
 11. Only uses Openrc as its PID1
 
 ## Requirements
